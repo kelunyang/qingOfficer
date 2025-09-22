@@ -1,0 +1,29 @@
+{
+  "name": "qing-officer-visualization",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "echo '⚠️  開發環境運行在 WSL+Caddy，請使用 npm run build 然後訪問 http://172.19.40.233/qingOfficer' && vite --host 0.0.0.0",
+    "dev-wsl": "vite --host 0.0.0.0 --port 3000",
+    "build": "vite build && npm run link-csv",
+    "build-only": "vite build",
+    "link-csv": "for file in ../output/*.csv; do [ -f \"$file\" ] && newname=$(basename \"$file\" | tr -d ' ') && ln -sf \"$(realpath \"$file\")\" \"dist/$newname\"; done",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.0",
+    "axios": "^1.6.0",
+    "d3": "^7.8.0",
+    "d3-sankey": "^0.12.3",
+    "element-plus": "^2.5.0",
+    "pinia": "^2.1.0",
+    "vue": "^3.4.0",
+    "vue-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "unplugin-auto-import": "^0.17.0",
+    "unplugin-vue-components": "^0.26.0",
+    "vite": "^5.0.0"
+  }
+}
